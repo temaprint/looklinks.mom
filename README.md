@@ -2,184 +2,186 @@
 
 # LookLinks — Link & Content Monitor
 
-### Ваш личный SEO-радар. Бесплатно. Без посредников. Без банов.
+### Your personal SEO radar. Free. No middlemen. No bans.
 
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Manifest_V3-4285F4?logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/develop/migrating/what-is-mv3)
 [![Price](https://img.shields.io/badge/Price-FREE-22c55e?labelColor=000)]()
 [![License](https://img.shields.io/badge/License-MIT-blue)]()
 
+![LookLinks Dashboard](looklinks.mom.png)
+
 </div>
 
 ---
 
-## Проблема
+## The Problem
 
-Вы купили ссылки на статейях, в комментариях, в профилях. Вложили деньги. Через неделю половина исчезла — вебмастера удалили статьи, модераторы почистили комментарии, ссылки протухли. А вы даже не узнали.
+You paid for backlinks — articles, comments, profiles. Invested real money. A week later, half of them are gone. Webmasters deleted articles, moderators cleaned up comments, links expired. And you didn't even know.
 
-Платные сервисы мониторинга берут **$30–200/мес**, но проверяют через свои сервера — и сайты видят роботов, блокируют IP, банят. Результат? Ложные срабатывания, пропущенные ссылки и дыра в бюджете.
+Paid monitoring services charge **$30–200/mo**, but they check from their own servers — websites see bots, block IPs, ban them. The result? False positives, missed links, and a hole in your budget.
 
-## Решение
+## The Solution
 
-**LookLinks** — бесплатное Chrome-расширение, которое проверяет ваши бэклинки так, как это сделал бы сам человек. Браузер открывает страницу в фоновой вкладке, ищет ваш текст или ссылку — и показывает результат. Никаких серверов. Никаких посредников. Никаких банов.
+**LookLinks** is a free Chrome extension that checks your backlinks the way a real person would. The browser opens the page in a background tab, searches for your text or link — and shows the result. No servers. No middlemen. No bans.
 
 ```
-Вы → Chrome → Открывает страницу → Ищет текст → Результат
-           ↑
-     Никаких сторонних серверов
+You → Chrome → Opens page → Searches text → Result
+            ↑
+      No third-party servers involved
 ```
 
-## Ключевые преимущества
+## Key Advantages
 
-| | Платные сервисы | **LookLinks** |
+| | Paid Services | **LookLinks** |
 |---|---|---|
-| Цена | $30–200/мес | **Навсегда бесплатно** |
-| Посредники | Проверяют через свои сервера | **Проверяете вы сами** |
-| Риск бана | IP сервисов в чёрных списках | **IP вашего браузера** |
-| Регистрация | Обязательная | **Не нужна** |
-| Лимиты ссылок | Ограничены тарифом | **Без ограничений** |
-| Конфиденциальность | Ваши данные на чужих серверах | **Данные у вас в браузере** |
+| Price | $30–200/mo | **Free forever** |
+| Middlemen | Check from their servers | **You check yourself** |
+| Ban risk | Service IPs on blacklists | **Your browser's IP** |
+| Registration | Required | **Not needed** |
+| Link limits | Capped by plan | **Unlimited** |
+| Privacy | Your data on their servers | **Data stays in your browser** |
 
-## Что умеет
+## Features
 
-### Мониторинг бэклинков
-Добавьте URL страницы и текст, который должны найти (ключевое слово, анкор ссылки, домен). Расширение проверит и покажет — на месте ваш текст или нет.
+### Backlink Monitoring
+Add a page URL and the text to look for (keyword, anchor text, domain). The extension checks and shows whether your content is still there.
 
-### Гибкие запросы
-Ищите простым текстом или регулярными выражениями. Нашли в статье «/seo.*2024/i» — увидите зелёный бейдж. Текст пропал — красный.
+### Flexible Queries
+Search with plain text or regular expressions. Found "/seo.*2024/i" in an article — you'll see a green badge. Text gone — red.
 
-### Автоматические проверки
-Настройте расписание — раз в день, раз в неделю или раз в месяц. Расширение само пройдётся по всем ссылкам с настраиваемой задержкой между проверками (10 сек — 5 мин), чтобы не вызывать подозрений.
+### Automated Checks
+Set up a schedule — daily, weekly, or monthly. The extension will go through all links with a configurable delay between checks (10 sec — 5 min) to avoid raising suspicion.
 
-### Организация
-- **Папки** — группируйте ссылки по проектам, клиентам, кампаниям
-- **Теги** — помечайте тип размещения: статья, комментарий, профиль или свои
-- **Фильтры** — быстрый отбор по домену, тегу, статусу
+### Organization
+- **Folders** — group links by projects, clients, campaigns
+- **Tags** — label placement type: article, comment, profile, or custom
+- **Filters** — quick filtering by domain, tag, status
 
-### Массовый импорт
-Вставьте список URL — и все ссылки добавятся одной кнопкой. Дубликаты отфильтруются автоматически.
+### Bulk Import
+Paste a list of URLs — all links are added with one click. Duplicates are filtered automatically.
 
-### Экспорт / Импорт
-Все данные хранятся локально в браузере. Экспортируйте в JSON-файл для бэкапа. Импортируйте на другом устройстве.
+### Export / Import
+All data is stored locally in your browser. Export to a JSON file for backup. Import on another device.
 
-### Синхронизация с дашбордом
-Опционально — подключите API-ключ и синхронизируйте данные с веб-дашбордом [dash.looklinks.mom](https://dash.looklinks.mom) для доступа с любого устройства.
+### Dashboard Sync
+Optionally — connect an API key and sync data with the web dashboard at [dash.looklinks.mom](https://dash.looklinks.mom) for access from any device.
 
-### Двуязычный интерфейс
-Английский и русский — переключаются в один клик.
+### Bilingual Interface
+English and Russian — switchable with one click.
 
-## Как это работает
+## How It Works
 
 ```
-1. Добавляете цель: URL страницы + текст для поиска
-2. Нажимаете "Проверить" или ждёте автоматической проверки
-3. Расширение открывает страницу в фоновой вкладке
-4. Ищет ваш текст на загруженной странице
-5. Показывает результат: НАЙДЕНО / НЕ НАЙДЕНО
-6. Закрывает вкладку и переходит к следующей цели
+1. Add a target: page URL + text to search for
+2. Click "Run Check" or wait for the automatic schedule
+3. The extension opens the page in a background tab
+4. Searches for your text on the loaded page
+5. Shows the result: FOUND / NOT FOUND
+6. Closes the tab and moves to the next target
 ```
 
-**Важно:** Расширение использует ваш реальный браузер. Сайты видят обычного пользователя, а не робота. Никаких подозрительных User-Agent, никаких дата-центров, никаких банов.
+**Important:** The extension uses your real browser. Websites see a regular user, not a bot. No suspicious User-Agents, no data center IPs, no bans.
 
-## Установка
+## Installation
 
-### Из исходников (для разработчиков)
+### From Source (for developers)
 
-1. Клонируйте репозиторий:
+1. Clone the repository:
 ```bash
-git clone https://github.com/ваш-репо/plugin.git
+git clone https://github.com/your-repo/plugin.git
 cd plugin
 ```
 
-2. Откройте Chrome и перейдите в `chrome://extensions/`
+2. Open Chrome and go to `chrome://extensions/`
 
-3. Включите **Режим разработчика** (переключатель в правом верхнем углу)
+3. Enable **Developer mode** (toggle in the top right corner)
 
-4. Нажмите **Загрузить распакованное расширение** и выберите папку `plugin`
+4. Click **Load unpacked** and select the `plugin` folder
 
-5. Готово! Нажмите на иконку расширения для открытия дашборда
+5. Done! Click the extension icon to open the dashboard
 
-## Использование
+## Usage
 
-### Быстрый старт
+### Quick Start
 
-1. **Добавьте первую цель** — введите URL донора, текст для поиска (анкор, ключевое слово или regex)
-2. **Выберите тег и папку** — для удобной организации
-3. **Нажмите "Проверить сейчас"** — расширение проверит все цели по очереди
-4. **Следите за результатами** — зелёный = ссылка на месте, красный = пропала
+1. **Add your first target** — enter the donor URL, text to search for (anchor, keyword, or regex)
+2. **Select tag and folder** — for convenient organization
+3. **Click "Run Check Now"** — the extension will check all targets sequentially
+4. **Monitor results** — green = link is alive, red = link is gone
 
-### Регулярный мониторинг
+### Regular Monitoring
 
-1. Добавьте все ваши ссылки (используйте "Массовое добавление" для больших объёмов)
-2. В настройках выберите расписание: ежедневно / еженедельно / ежемесячно
-3. Настройте задержку между проверками (рекомендуется 1 минута)
-4. Расширение будет проверять ссылки автоматически в фоне
+1. Add all your links (use "Bulk Add" for large volumes)
+2. In settings, select a schedule: daily / weekly / monthly
+3. Set the delay between checks (1 minute recommended)
+4. The extension will check links automatically in the background
 
-### Примеры запросов
+### Query Examples
 
-| Тип запроса | Пример | Описание |
+| Query Type | Example | Description |
 |---|---|---|
-| Точный текст | `mybrand` | Найдёт упоминание бренда |
-| URL ссылки | `https://mysite.com` | Проверит наличие конкретной ссылки |
-| Анкор | `купить iphone` | Проверит анкор текста ссылки |
-| Regex | `/nofollow.*mysite/i` | Проверит, не добавили ли nofollow |
-| Regex | `/<a.*href.*mysite.*rel=["']?nofollow/i` | Поиск ссылок с nofollow в HTML |
+| Plain text | `mybrand` | Find brand mentions |
+| Link URL | `https://mysite.com` | Check for a specific link |
+| Anchor text | `buy iphone` | Check link anchor text |
+| Regex | `/nofollow.*mysite/i` | Detect if nofollow was added |
+| Regex | `/<a.*href.*mysite.*rel=["']?nofollow/i` | Find links with nofollow in HTML |
 
-## Для кого
+## Who Is It For
 
-- **SEO-специалисты** — контроль купленных ссылок без переплат за сервисы
-- **Вебмастера** — мониторинг исходящих ссылок с ваших площадок
-- **Маркетологи** — отслеживание упоминаний бренда и публикаций
-- **Фрилансеры** — доказательство размещения ссылок для клиентов
-- **Агентства** — массовый мониторинг по множеству проектов
+- **SEO specialists** — monitor purchased links without overpaying for services
+- **Webmasters** — track outgoing links from your sites
+- **Marketers** — monitor brand mentions and publications
+- **Freelancers** — prove link placement to clients
+- **Agencies** — mass monitoring across multiple projects
 
-## Технические детали
+## Technical Details
 
-- **Manifest V3** — актуальный стандарт Chrome Extensions
-- **Service Worker** — фоновые проверки даже при закрытом дашборде
-- **chrome.scripting API** — инъекция поискового скрипта в целевые страницы
-- **chrome.alarms API** — надёжное расписание проверок
-- **chrome.storage.local** — все данные хранятся локально
-- **Retry-механизм** — автоматический повтор при ошибке загрузки страницы
-- **Без внешних зависимостей** — чистый vanilla JS, ~500 строк кода
+- **Manifest V3** — current Chrome Extension standard
+- **Service Worker** — background checks even when dashboard is closed
+- **chrome.scripting API** — search script injection into target pages
+- **chrome.alarms API** — reliable check scheduling
+- **chrome.storage.local** — all data stored locally
+- **Retry mechanism** — automatic retry on page load failure
+- **Zero dependencies** — pure vanilla JS, ~500 lines of code
 
-## Структура проекта
+## Project Structure
 
 ```
 plugin/
-├── manifest.json          # Manifest V3 конфигурация
-├── background.js          # Service worker: очередь, проверки, расписание
-├── dashboard.html         # UI дашборда
-├── dashboard.js           # Логика UI: фильтры, сортировка, таблицы
-├── i18n.js                # Интернационализация (EN/RU)
-├── styles.css             # Стили дашборда
+├── manifest.json          # Manifest V3 configuration
+├── background.js          # Service worker: queue, checks, scheduling
+├── dashboard.html         # Dashboard UI
+├── dashboard.js           # UI logic: filters, sorting, tables
+├── i18n.js                # Internationalization (EN/RU)
+├── styles.css             # Dashboard styles
 ├── utils/
-│   └── storage.js         # Хранилище: CRUD цели, теги, папки, настройки
-└── icons/                 # Иконки расширения
+│   └── storage.js         # Storage: CRUD targets, tags, folders, settings
+└── icons/                 # Extension icons
 ```
 
 ## FAQ
 
-**Вопрос:** Могут ли сайты определить, что я использую расширение?
-**Ответ:** Нет. Расширение открывает страницу как обычная вкладка. Сайт видит ваш стандартный браузер и IP.
+**Q:** Can websites detect that I'm using the extension?
+**A:** No. The extension opens pages as regular tabs. The website sees your standard browser and IP.
 
-**Вопрос:** Сколько ссылок можно отслеживать?
-**Ответ:** Без ограничений. Chrome storage позволяет хранить тысячи целей.
+**Q:** How many links can I track?
+**A:** Unlimited. Chrome storage can handle thousands of targets.
 
-**Вопрос:** Расширение отправляет мои данные куда-либо?
-**Ответ:** Нет. Все данные хранятся локально. Синхронизация с дашбордом — опциональна и требует явного указания API-ключа.
+**Q:** Does the extension send my data anywhere?
+**A:** No. All data is stored locally. Dashboard sync is optional and requires an explicit API key.
 
-**Вопрос:** Можно ли использовать на нескольких устройствах?
-**Ответ:** Да, через экспорт/импорт JSON-файла или через синхронизацию с веб-дашбордом.
+**Q:** Can I use it on multiple devices?
+**A:** Yes, via JSON file export/import or web dashboard sync.
 
-**Вопрос:** Какие браузеры поддерживаются?
-**Ответ:** Chrome и все Chromium-браузеры (Edge, Brave, Opera, Vivaldi и др.).
+**Q:** Which browsers are supported?
+**A:** Chrome and all Chromium-based browsers (Edge, Brave, Opera, Vivaldi, etc.).
 
 ---
 
 <div align="center">
 
-### Бесплатно. Навсегда. Без посредников. Без банов.
+### Free. Forever. No middlemen. No bans.
 
-**LookLinks** — потому что ваши ссылки должны работать на вас, а не пропадать втихую.
+**LookLinks** — because your links should work for you, not vanish silently.
 
 </div>
