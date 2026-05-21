@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>looklinks.mom</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="icons/favicon.ico" sizes="32x32">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon32.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="icons/icon128.png">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- Warning banner -->
+    <div id="warningBanner" class="warning-banner" style="display:none">
+      <span id="warningText"></span>
+      <button id="warningDismiss" class="warning-dismiss">&times;</button>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <h1 data-i18n="appName">looklinks.mom</h1>
+      <span id="statusBadge" class="status-badge idle">
+        <span class="dot"></span>
+        <span id="statusText" data-i18n="idle">Idle</span>
+      </span>
+      <select id="langSelect" class="lang-select">
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+      </select>
+      <span class="spacer"></span>
+      <div class="delay-group">
+        <label for="inputDelay" data-i18n="delayLabel">Delay</label>
+        <select id="inputDelay" class="tag-select">
+          <option value="10">10s</option>
+          <option value="30">30s</option>
+          <option value="60" selected>1m</option>
+          <option value="120">2m</option>
+          <option value="300">5m</option>
+        </select>
+      </div>
+      <button id="btnRunCheck" class="btn btn-primary" data-i18n="runCheck">Run Check Now</button>
+      <button id="btnStopQueue" class="btn btn-danger btn-sm" style="display:none" data-i18n="stop">Stop</button>
+    </div>
+
+    <!-- Add Target -->
+    <div class="card">
+      <div class="card-title" data-i18n="addTarget">Add Target</div>
+      <form id="addTargetForm" class="form-row">
+        <div class="form-group">
+          <label for="inputUrl" data-i18n="urlLabel">URL</label>
+          <input type="url" id="inputUrl"
+                 data-i18n-placeholder="urlPlaceholder"
+                 placeholder="https://example.com/page" required />
+        </div>
+        <div class="form-group">
+          <label for="inputQuery" data-i18n="queryLabel">Query (text or regex)</label>
+          <input type="text" id="inputQuery"
+                 data-i18n-placeholder="queryPlaceholder"
+                 placeholder="keyword or /regex/" required />
+        </div>
+        <div class="form-group form-group--narrow">
+          <label for="inputTag" data-i18n="tagLabel">Tag</label>
+          <select id="inputTag" class="tag-select"></select>
+        </div>
+        <div class="form-group form-group--narrow">
+          <label for="inputFolder" data-i18n="folderLabel">Folder</label>
+          <select id="inputFolder" class="tag-select"></select>
+        </div>
+        <button type="submit" class="btn btn-primary" data-i18n="add">Add</button>
+        <button type="button" id="btnOpenBulk" class="btn btn-ghost" data-i18n="bulkAdd">Bulk Add</button>
+      </form>
+    </div>
+
+    <!-- Targets Table -->
+    <div class="card">
+      <div class="card-title">
+        <span data-i18n="targets">Targets</span>
+        <span id="targetCount" class="count"></span>
+      </div>
+      <!-- Folder tabs -->
+      <div id="folderTabs" class="folder-tabs"></div>
+      <!-- Quick filters -->
+      <div id="filterBar" class="filter-bar"></div>
+      <!-- Table -->
+      <div class="table-wrap">
+        <table id="targetsTable">
+          <thead>
+            <tr>
+              <th class="sortable" data-sort="url"><span data-i18n="thUrl">URL</span></th>
+              <th class="sortable" data-sort="tag"><span data-i18n="thTag">Tag</span></th>
+              <th class="sortable" data-sort="query"><span data-i18n="thQuery">Query</span></th>
+              <th class="sortable" data-sort="status"><span data-i18n="thStatus">Status</span></th>
+              <th class="sortable" data-sort="lastChecked"><span data-i18n="thLastChecked">Last Checked</span></th>
+              <th class="sortable" data-sort="createdAt"><span data-i18n="thAdded">Added</span></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="targetsBody"></tbody>
+        </table>
+        <div id="pagination" class="pagination" style="display:none"></div>
+        <div id="emptyState" class="empty-state" style="display:none">
+          <p id="emptyText" data-i18n="emptyState">No targets yet. Add one above to get started.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="card">
+      <div class="card-title" data-i18n="settings">Settings</div>
+      <div class="settings-row">
+        <div class="form-group">
+          <label for="inputApiKey" data-i18n="apiKeyLabel">API Key</label>
+          <input type="text" id="inputApiKey"
+                 data-i18n-placeholder="apiKeyPlaceholder"
+                 placeholder="Leave empty to skip API calls" />
+        </div>
+        <div class="form-group form-group--narrow">
+          <label for="inputSchedule" data-i18n="scheduleLabel">Check schedule</label>
+          <select id="inputSchedule" class="tag-select">
+            <option value="daily" data-i18n="scheduleDaily">Once a day</option>
+            <option value="weekly" data-i18n="scheduleWeekly">Once a week</option>
+            <option value="monthly" data-i18n="scheduleMonthly">Once a month</option>
+          </select>
+        </div>
+        <button id="btnSaveSettings" class="btn btn-primary btn-sm" data-i18n="save">Save</button>
+      </div>
+      <div class="settings-row" style="margin-top:16px">
+        <button id="btnExport" class="btn btn-primary btn-sm" data-i18n="export">Export</button>
+        <button id="btnImport" class="btn btn-ghost btn-sm" data-i18n="import">Import</button>
+        <input type="file" id="importFile" accept=".json" style="display:none" />
+        <span id="lastSavedInfo" class="last-saved-info"></span>
+      </div>
+      <div class="settings-row" style="margin-top:12px">
+        <button id="btnSyncTo" class="btn btn-primary btn-sm">Sync to Dashboard</button>
+        <button id="btnSyncFrom" class="btn btn-ghost btn-sm">Sync from Dashboard</button>
+        <span id="syncStatus" class="last-saved-info"></span>
+      </div>
+    </div>
+
+    <!-- Manage Tags -->
+    <div class="card">
+      <div class="card-title" data-i18n="manageTags">Manage Tags</div>
+      <div id="tagsList" class="tags-list"></div>
+      <form id="addTagForm" class="form-row" style="margin-top:12px">
+        <div class="form-group">
+          <label for="newTagName" data-i18n="newTagLabel">New Tag</label>
+          <input type="text" id="newTagName"
+                 data-i18n-placeholder="newTagPlaceholder"
+                 placeholder="Tag name" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" data-i18n="addTag">Add Tag</button>
+      </form>
+    </div>
+
+    <!-- Manage Folders -->
+    <div class="card">
+      <div class="card-title" data-i18n="manageFolders">Manage Folders</div>
+      <div id="foldersList" class="tags-list"></div>
+      <form id="addFolderForm" class="form-row" style="margin-top:12px">
+        <div class="form-group">
+          <label for="newFolderName" data-i18n="newFolderLabel">New Folder</label>
+          <input type="text" id="newFolderName"
+                 data-i18n-placeholder="newFolderPlaceholder"
+                 placeholder="Folder name" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" data-i18n="addFolder">Create</button>
+      </form>
+    </div>
+
+    <!-- Bulk Import Modal -->
+    <div id="bulkModal" class="modal-overlay" style="display:none">
+      <div class="modal" style="max-width:720px">
+        <div class="card-title" data-i18n="bulkTitle">Bulk Import</div>
+        <form id="bulkForm">
+          <div class="form-group" style="margin-bottom:16px">
+            <label for="bulkUrls" data-i18n="bulkUrlsLabel">URLs (one per line)</label>
+            <textarea id="bulkUrls" class="bulk-textarea"
+                      data-i18n-placeholder="bulkUrlsPlaceholder"
+                      placeholder="https://example.com/page1&#10;https://example.com/page2&#10;https://example.com/page3"
+                      required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bulkQuery" data-i18n="queryLabel">Query (text or regex)</label>
+              <input type="text" id="bulkQuery"
+                     data-i18n-placeholder="queryPlaceholder"
+                     placeholder="keyword or /regex/" required />
+            </div>
+            <div class="form-group form-group--narrow">
+              <label for="bulkTag" data-i18n="tagLabel">Tag</label>
+              <select id="bulkTag" class="tag-select"></select>
+            </div>
+            <div class="form-group form-group--narrow">
+              <label for="bulkFolder" data-i18n="folderLabel">Folder</label>
+              <select id="bulkFolder" class="tag-select"></select>
+            </div>
+          </div>
+          <div id="bulkResult" class="bulk-result" style="display:none"></div>
+          <div class="form-row" style="margin-top:16px">
+            <button type="submit" class="btn btn-primary" data-i18n="bulkImport">Import</button>
+            <button type="button" id="btnCancelBulk" class="btn btn-ghost" data-i18n="cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal-overlay" style="display:none">
+      <div class="modal">
+        <div class="card-title" data-i18n="editTarget">Edit Target</div>
+        <form id="editTargetForm" class="form-row">
+          <input type="hidden" id="editId" />
+          <div class="form-group">
+            <label for="editUrl" data-i18n="urlLabel">URL</label>
+            <input type="url" id="editUrl" required />
+          </div>
+          <div class="form-group">
+            <label for="editQuery" data-i18n="queryLabel">Query</label>
+            <input type="text" id="editQuery" required />
+          </div>
+          <div class="form-group form-group--narrow">
+            <label for="editTag" data-i18n="tagLabel">Tag</label>
+            <select id="editTag" class="tag-select"></select>
+          </div>
+          <div class="form-group form-group--narrow">
+            <label for="editFolder" data-i18n="folderLabel">Folder</label>
+            <select id="editFolder" class="tag-select"></select>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="save">Save</button>
+          <button type="button" id="btnCancelEdit" class="btn btn-ghost" data-i18n="cancel">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Logs -->
+    <div class="card">
+      <div class="logs-header">
+        <div class="card-title" style="margin-bottom:0" data-i18n="logs">Logs</div>
+        <button id="btnClearLogs" class="btn btn-ghost btn-sm" data-i18n="clear">Clear</button>
+      </div>
+      <div id="logsPanel" class="logs-panel" style="margin-top:12px">
+        <div style="color:#64748b;padding:16px;text-align:center" data-i18n="noLogs">No logs yet.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts: storage helpers → i18n → dashboard logic -->
+  <script src="utils/storage.js"></script>
+  <script src="i18n.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
